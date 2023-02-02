@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DiplomWeb.Models
+﻿namespace DiplomWeb.Models
 {
     public partial class Cost
     {

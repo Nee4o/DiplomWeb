@@ -1,27 +1,24 @@
 ﻿using DiplomWeb.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace DiplomWeb.Controllers
 {
-    
-    public class RequestController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RequestController : ControllerBase
     {
-       
+        public RZDDatabaseContext context { get; set; }
+
         public RequestController()
         {
-           
+            context = new RZDDatabaseContext();
         }
 
-        public IActionResult Index()
+        [HttpGet("GetList")]
+        public ActionResult<Request> Get()
         {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var ret = context.Requests.ToList();
+            return new ObjectResult(ret);
         }
     }
 }

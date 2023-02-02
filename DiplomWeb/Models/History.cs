@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DiplomWeb.Models
@@ -7,6 +8,7 @@ namespace DiplomWeb.Models
     {
         public int Id { get; set; }
         public string Title { get; set; } = null!;
+        [JsonIgnore]
         public DateOnly Date { get; set; }
         public int IdWorker { get; set; }
 
